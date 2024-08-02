@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+:root {
+	--color-primary: #4285f4;
+	--max-width-primary: 1200px;
+	--primary-color: #000;
+	--white-color: #fff;
+	--black-color: #000;
+	--orange-color: #d80d0d;
+	--text-color: #222222;
+	--border-color: #dbdbdb;
+	--start-gold-color: #ffce3e;
+	--header-height: 155px;
+	--navbar-height: 48px;
+	--header-with-search-height: calc(
+		var(--header-height) - var(--navbar-height)
+	);
+
+	--transition-move: cubic-bezier(0.25, -0.59, 0.82, 1.66);
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 14px;
+	font-family: "Roboto", sans-serif;
+}
+
+img {
+	object-fit: cover;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+li {
+	list-style: none;
+}
+
+/* Icon Star */
+.rating-star {
+	width: 16px;
+	min-width: 16px;
+	height: 16px;
+	display: block;
+	margin-right: 3px;
+	background-color: #ffbc59;
+	-webkit-mask-image: url(https://asset.vuahanghieu.com/assets/images/rating-star.svg);
+	mask-image: url(https://asset.vuahanghieu.com/assets/images/rating-star.svg);
+	-webkit-mask-size: contain;
+	mask-size: contain;
+}
+
+.rating-star.rating-half {
+	background: #ffbc59;
+	background: linear-gradient(
+		90deg,
+		rgba(255, 188, 89, 1) 0,
+		rgba(255, 188, 89, 1) 50%,
+		rgba(214, 218, 223, 1) 50%,
+		rgba(214, 218, 223, 1) 100%
+	);
+}
+
+/* Modal */
+.modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	/* display: flex; */
+	display: none;
+}
+.header__navbar-item--register:hover .modal {
+	display: block;
+}
+
+/* Tạo lớp mờ */
+.modal__overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal__body {
+	--growth-from: 0.7;
+	--growth-to: 1;
+	margin: auto;
+	/* Để cho nó hiện ra trước mặc kệ nó được ghi đứng 
+    trước hay sau modal__overlay */
+	position: relative;
+	z-index: 1;
+	animation: growth linear 0.1s;
+}
+
+/* Nút dùng chung nên viết file base
+Button style */
+
+.btn {
+	min-width: 124px;
+	height: 34px;
+	text-decoration: none;
+	border: none;
+	border-radius: 4px;
+	font-size: 1.5rem;
+	padding: 0 12px;
+	outline: none;
+	cursor: pointer;
+	color: var(--text-color);
+	/* display: flex; */
+	/* Sửa thành inline-flex mấy cái nút mới nằm ngang*/
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1.6rem;
+}
+
+.btn--size-s {
+	padding: 0 8px;
+	height: 30px;
+	font-size: 1.2rem;
+}
+
+.btn.btn--normal:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn.btn--primary {
+	color: var(--white-color);
+	background-color: var(--primary-color);
+}
+
+.btn.btn--disabled {
+	color: #949494;
+	cursor: default;
+	background-color: #c3c3c3;
+}
+
+.underline {
+	width: 100%;
+	margin: auto;
+	height: 1.5px;
+	background-color: #ccc;
+	margin-top: 12px;
+}
+
+.text-wrap {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+	width: 100%;
+	line-height: 1.4;
+}
+
+/* Input animation */
+
+.form-input {
+	width: 100%;
+	height: 50px;
+	padding: 0 15px;
+	margin: 8px 0;
+	font-size: 16px;
+	border-radius: 4px;
+	border: 1px solid #eee;
+	outline: none;
+	transition: all 0.25s ease;
+}
+
+.form-input:focus {
+	border-color: var(--color-primary);
+}
+
+.form-field {
+	position: relative;
+}
+
+.form-label {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 16px;
+	color: #999;
+	pointer-events: none;
+	transition: 0.25s ease;
+}
+
+.form-input:not(:placeholder-shown) + .form-label,
+.form-input:focus + .form-label {
+	top: 8px;
+	padding: 5px 10px;
+	display: inline-block;
+	background-color: var(--white-color);
+	color: var(--color-primary);
+}
+
+.form-input:not(:focus) + .form-label {
+	color: #aaa;
+}
